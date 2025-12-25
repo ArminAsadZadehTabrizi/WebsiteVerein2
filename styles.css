@@ -1,0 +1,667 @@
+/* ==================== RESET & BASE STYLES ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==================== HEADER & NAVIGATION ==================== */
+.site-header {
+    background-color: #004d99; /* Deep Club Blue */
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* Desktop Navigation */
+.main-nav {
+    display: none;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-list a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+.nav-list a:hover {
+    color: #e63946; /* Energetic Red */
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #003d7a;
+    list-style: none;
+    min-width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+}
+
+.dropdown-menu a:hover {
+    background-color: #002d5a;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    background-color: #003d7a;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+}
+
+.mobile-nav.active {
+    display: block;
+    max-height: 400px;
+}
+
+.mobile-nav-list {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+.mobile-nav-list li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-list a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-nav-list a:hover {
+    background-color: #002d5a;
+}
+
+/* ==================== NEWS TICKER (CRITICAL FEATURE) ==================== */
+.news-ticker {
+    background-color: #e63946; /* Energetic Red */
+    color: white;
+    padding: 1rem 0;
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ticker-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ticker-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.ticker-text {
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.ticker-text strong {
+    font-weight: 800;
+}
+
+.ticker-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.ticker-close:hover {
+    transform: scale(1.2);
+}
+
+.news-ticker.hidden {
+    display: none;
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 77, 153, 0.8), rgba(230, 57, 70, 0.6));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-headline {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #e63946;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+}
+
+.cta-button:hover {
+    background-color: #d62839;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.6);
+}
+
+/* ==================== SECTIONS GENERAL ==================== */
+section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #004d99;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #e63946;
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+/* ==================== DEPARTMENTS CARDS ==================== */
+.departments {
+    background-color: white;
+}
+
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.department-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.department-card:hover {
+    transform: translateY(-8px);
+    border-color: #004d99;
+    box-shadow: 0 12px 30px rgba(0, 77, 153, 0.15);
+}
+
+.card-icon {
+    color: #004d99;
+    margin-bottom: 1.5rem;
+}
+
+.department-card h3 {
+    font-size: 1.75rem;
+    color: #004d99;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.department-card p {
+    color: #555;
+    line-height: 1.7;
+}
+
+/* ==================== TRAINING SCHEDULE (RESPONSIVE TABLE) ==================== */
+.training-schedule {
+    background-color: #f8f9fa;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table Header */
+.schedule-table thead {
+    background-color: #004d99;
+    color: white;
+}
+
+.schedule-table th {
+    padding: 1.25rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+/* Table Body */
+.schedule-table tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.3s ease;
+}
+
+.schedule-table tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+.schedule-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.schedule-table td {
+    padding: 1.25rem 1rem;
+    color: #333;
+}
+
+/* 
+    CRITICAL: RESPONSIVE TABLE TRANSFORMATION
+    
+    Strategy: On mobile (<768px), transform the table into card-style blocks
+    
+    How it works:
+    1. Hide the <thead> completely on mobile
+    2. Make each <tr> display as a block (becomes a "card")
+    3. Make each <td> display as a grid with 2 columns:
+       - Column 1: The label (from data-label attribute)
+       - Column 2: The actual cell content
+    4. Add spacing and borders to create card appearance
+    
+    This prevents horizontal scrolling and makes data scannable on phones
+*/
+
+@media screen and (max-width: 767px) {
+    /* Hide table header on mobile */
+    .schedule-table thead {
+        display: none;
+    }
+    
+    /* Transform rows into cards */
+    .schedule-table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .schedule-table tbody tr:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Transform cells into labeled rows */
+    .schedule-table td {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid #f1f3f5;
+    }
+    
+    .schedule-table td:last-child {
+        border-bottom: none;
+    }
+    
+    /* Add labels before each cell using data-label attribute */
+    .schedule-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #004d99;
+    }
+    
+    /* Alternate row background for better readability in card */
+    .schedule-table td:nth-child(odd) {
+        background-color: #f8f9fa;
+    }
+}
+
+/* ==================== CONTACT / BOARD MEMBERS ==================== */
+.contacts {
+    background-color: white;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+}
+
+.contact-card {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-photo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #004d99;
+}
+
+.contact-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contact-name {
+    font-size: 1.4rem;
+    color: #004d99;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.contact-role {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.contact-button {
+    display: inline-block;
+    background-color: #e63946;
+    color: white;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #d62839;
+    transform: scale(1.05);
+}
+
+/* ==================== FOOTER ==================== */
+.site-footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 3rem 0 1.5rem;
+}
+
+.sponsors {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sponsors h3 {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #e9ecef;
+}
+
+.sponsors-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.sponsor-item {
+    color: #adb5bd;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #e63946;
+}
+
+.social-media {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-media a {
+    color: #adb5bd;
+    transition: all 0.3s ease;
+}
+
+.social-media a:hover {
+    color: #e63946;
+    transform: translateY(-3px);
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* ==================== RESPONSIVE BREAKPOINTS ==================== */
+
+/* Tablet and up: Show desktop nav, hide hamburger */
+@media screen and (min-width: 768px) {
+    .main-nav {
+        display: block;
+    }
+    
+    .hamburger {
+        display: none;
+    }
+    
+    .hero {
+        height: 700px;
+    }
+}
+
+/* Desktop: Larger containers and spacing */
+@media screen and (min-width: 1024px) {
+    .container {
+        padding: 0 40px;
+    }
+    
+    section {
+        padding: 5rem 0;
+    }
+}
