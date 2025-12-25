@@ -28,11 +28,45 @@ mobileNavLinks.forEach(link => {
 const tickerClose = document.getElementById('tickerClose');
 const newsTicker = document.getElementById('newsTicker');
 
-// Close ticker when X button is clicked (session only - reappears on page reload)
-tickerClose.addEventListener('click', () => {
-    // Add 'hidden' class to hide the ticker
-    newsTicker.classList.add('hidden');
-});
+// Close ticker when X button is clicked (NO localStorage - always shows on page load)
+if (tickerClose) {
+    tickerClose.addEventListener('click', () => {
+        // Add 'hidden' class to hide the ticker
+        newsTicker.classList.add('hidden');
+    });
+}
+
+/* ==================== HERO SLIDESHOW ==================== */
+
+// Initialize slideshow if it exists on the page
+const heroSlideshow = document.querySelector('.hero-slideshow');
+
+if (heroSlideshow) {
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+
+    // Function to show the next slide
+    function nextSlide() {
+        // Remove active class from current slide
+        slides[currentSlide].classList.remove('active');
+
+        // Move to next slide (loop back to 0 if at the end)
+        currentSlide = (currentSlide + 1) % slides.length;
+
+        // Add active class to new current slide
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Make first slide visible immediately
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+    }
+
+    // Auto-advance slides every 5 seconds
+    if (slides.length > 1) {
+        setInterval(nextSlide, 5000);
+    }
+}
 
 /* ==================== SMOOTH SCROLL ENHANCEMENT ==================== */
 
