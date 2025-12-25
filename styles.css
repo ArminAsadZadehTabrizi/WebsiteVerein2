@@ -24,12 +24,14 @@ body {
 
 /* ==================== HEADER & NAVIGATION ==================== */
 .site-header {
-    background-color: #004d99; /* Deep Club Blue */
+    background-color: #004d99;
+    /* Deep Club Blue */
     color: white;
     padding: 1rem 0;
     position: sticky;
-    top: 0;
-    z-index: 1000;
+    top: 4rem;
+    z-index: 999;
+    /* Below ticker (1001) */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -65,7 +67,8 @@ body {
 }
 
 .nav-list a:hover {
-    color: #e63946; /* Energetic Red */
+    color: #e63946;
+    /* Energetic Red */
 }
 
 /* Dropdown */
@@ -180,10 +183,15 @@ body {
 
 /* ==================== NEWS TICKER (CRITICAL FEATURE) ==================== */
 .news-ticker {
-    background-color: #e63946; /* Energetic Red */
+    background-color: #e63946;
+    /* Energetic Red */
     color: white;
     padding: 1rem 0;
     animation: slideDown 0.5s ease;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    /* Higher than header (1000) so it stays on top */
 }
 
 @keyframes slideDown {
@@ -191,6 +199,7 @@ body {
         transform: translateY(-100%);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -443,11 +452,12 @@ section {
 */
 
 @media screen and (max-width: 767px) {
+
     /* Hide table header on mobile */
     .schedule-table thead {
         display: none;
     }
-    
+
     /* Transform rows into cards */
     .schedule-table tbody tr {
         display: block;
@@ -456,11 +466,11 @@ section {
         border-radius: 8px;
         overflow: hidden;
     }
-    
+
     .schedule-table tbody tr:last-child {
         margin-bottom: 0;
     }
-    
+
     /* Transform cells into labeled rows */
     .schedule-table td {
         display: grid;
@@ -469,18 +479,18 @@ section {
         padding: 1rem;
         border-bottom: 1px solid #f1f3f5;
     }
-    
+
     .schedule-table td:last-child {
         border-bottom: none;
     }
-    
+
     /* Add labels before each cell using data-label attribute */
     .schedule-table td::before {
         content: attr(data-label);
         font-weight: 700;
         color: #004d99;
     }
-    
+
     /* Alternate row background for better readability in card */
     .schedule-table td:nth-child(odd) {
         background-color: #f8f9fa;
@@ -645,11 +655,11 @@ section {
     .main-nav {
         display: block;
     }
-    
+
     .hamburger {
         display: none;
     }
-    
+
     .hero {
         height: 700px;
     }
@@ -660,8 +670,469 @@ section {
     .container {
         padding: 0 40px;
     }
-    
+
     section {
         padding: 5rem 0;
     }
+}
+
+/* ==================== NEW PAGE STYLES ==================== */
+
+/* Small Hero Variant */
+.hero.small-hero {
+    height: 400px;
+}
+
+/* Department Detail Pages */
+.department-detail {
+    background-color: white;
+}
+
+.detail-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.detail-block h3 {
+    font-size: 1.5rem;
+    color: #004d99;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.detail-block p {
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Pricing Tables */
+.pricing-section {
+    background-color: #f8f9fa;
+}
+
+.pricing-table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pricing-table thead {
+    background-color: #004d99;
+    color: white;
+}
+
+.pricing-table th {
+    padding: 1.25rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.pricing-table tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.3s ease;
+}
+
+.pricing-table tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+.pricing-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.pricing-table td {
+    padding: 1.25rem 1rem;
+    color: #333;
+}
+
+.pricing-table strong {
+    color: #e63946;
+    font-size: 1.2rem;
+}
+
+.cta-centered {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive Pricing Table */
+@media screen and (max-width: 767px) {
+    .pricing-table thead {
+        display: none;
+    }
+
+    .pricing-table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .pricing-table td {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid #f1f3f5;
+    }
+
+    .pricing-table td:last-child {
+        border-bottom: none;
+    }
+
+    .pricing-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #004d99;
+    }
+
+    .pricing-table td:nth-child(odd) {
+        background-color: #f8f9fa;
+    }
+}
+
+/* Team Gallery */
+.team-gallery {
+    background-color: white;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.photo-item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-caption {
+    padding: 1rem;
+    text-align: center;
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Feature Highlight Section */
+.feature-highlight {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.highlight-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+    .highlight-content {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+.highlight-text h3 {
+    font-size: 1.75rem;
+    color: #004d99;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.highlight-text p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+.feature-list li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: #333;
+}
+
+.feature-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #e63946;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.highlight-price {
+    background-color: #004d99;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.highlight-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.highlight-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Membership Pricing Section */
+.membership-pricing {
+    background-color: white;
+}
+
+.section-intro {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table thead {
+    background-color: #004d99;
+    color: white;
+}
+
+.comparison-table th {
+    padding: 1.25rem 1rem;
+    text-align: left;
+    font-weight: 700;
+}
+
+.comparison-table tbody tr {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.comparison-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.comparison-table td {
+    padding: 1.25rem 1rem;
+}
+
+.price-highlight {
+    color: #e63946;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* Responsive Comparison Table */
+@media screen and (max-width: 767px) {
+    .comparison-table thead {
+        display: none;
+    }
+
+    .comparison-table tbody tr {
+        display: block;
+        margin-bottom: 1.5rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .comparison-table td {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid #f1f3f5;
+    }
+
+    .comparison-table td:last-child {
+        border-bottom: none;
+    }
+
+    .comparison-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #004d99;
+    }
+}
+
+/* Application Form */
+.application-form-section {
+    background-color: #f8f9fa;
+}
+
+.membership-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #004d99;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Location Section */
+.location-section {
+    background-color: white;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .location-grid {
+        grid-template-columns: 1.5fr 1fr;
+    }
+}
+
+.map-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+    width: 100%;
+    display: block;
+}
+
+.address-info h3 {
+    font-size: 1.5rem;
+    color: #004d99;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.address-info h4 {
+    font-size: 1.2rem;
+    color: #004d99;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.address {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.directions-list {
+    list-style: none;
+    padding: 0;
+}
+
+.directions-list li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: #555;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.directions-list li:last-child {
+    border-bottom: none;
+}
+
+.directions-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #e63946;
+    font-weight: 700;
 }
