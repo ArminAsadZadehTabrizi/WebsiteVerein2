@@ -35,7 +35,8 @@ body {
     color: white;
     padding: 1rem 0;
     position: sticky;
-    top: 4rem;
+    top: 0;
+    margin-top: 4rem;
     z-index: 999;
     /* Below ticker (1001) */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -196,10 +197,13 @@ body {
     margin: 0 !important;
     border: none;
     animation: slideDown 0.5s ease;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 1001;
-    /* Higher than header (1000) so it stays on top */
+    /* Higher than header (999) so it stays on top */
 }
 
 @keyframes slideDown {
@@ -808,6 +812,7 @@ section {
 .text-highlight {
     color: #e63946 !important;
     font-weight: 800;
+    font-size: 1.3em;
 }
 
 .cta-centered {
