@@ -43,28 +43,63 @@ const heroSlideshow = document.querySelector('.hero-slideshow');
 
 if (heroSlideshow) {
     const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.dot-indicator');
     let currentSlide = 0;
+    let autoAdvanceInterval;
+
+    // Function to show a specific slide
+    function goToSlide(slideIndex) {
+        // Remove active class from current slide and dot
+        slides[currentSlide].classList.remove('active');
+        if (dots.length > 0) {
+            dots[currentSlide].classList.remove('active');
+        }
+
+        // Update current slide index
+        currentSlide = slideIndex;
+
+        // Add active class to new slide and dot
+        slides[currentSlide].classList.add('active');
+        if (dots.length > 0) {
+            dots[currentSlide].classList.add('active');
+        }
+    }
 
     // Function to show the next slide
     function nextSlide() {
-        // Remove active class from current slide
-        slides[currentSlide].classList.remove('active');
-
-        // Move to next slide (loop back to 0 if at the end)
-        currentSlide = (currentSlide + 1) % slides.length;
-
-        // Add active class to new current slide
-        slides[currentSlide].classList.add('active');
+        const nextIndex = (currentSlide + 1) % slides.length;
+        goToSlide(nextIndex);
     }
 
     // Make first slide visible immediately
     if (slides.length > 0) {
         slides[0].classList.add('active');
+        if (dots.length > 0) {
+            dots[0].classList.add('active');
+        }
     }
 
-    // Auto-advance slides every 5 seconds
+    // Add click handlers to dot indicators for manual navigation
+    if (dots.length > 0) {
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+
+                // Reset auto-advance timer when user manually navigates
+                if (autoAdvanceInterval) {
+                    clearInterval(autoAdvanceInterval);
+                    // Restart auto-advance after manual interaction
+                    if (slides.length > 1) {
+                        autoAdvanceInterval = setInterval(nextSlide, 5500);
+                    }
+                }
+            });
+        });
+    }
+
+    // Auto-advance slides every 5.5 seconds (5500ms)
     if (slides.length > 1) {
-        setInterval(nextSlide, 5000);
+        autoAdvanceInterval = setInterval(nextSlide, 5500);
     }
 }
 

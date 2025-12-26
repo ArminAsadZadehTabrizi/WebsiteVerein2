@@ -362,6 +362,119 @@ body {
     box-shadow: 0 6px 20px rgba(230, 57, 70, 0.6);
 }
 
+/* ==================== SLIDESHOW ENHANCEMENTS ==================== */
+
+/* Slide Content - Text Overlay for Each Individual Slide */
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.slide-headline {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.slide-text {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: 500;
+}
+
+.slide-cta {
+    display: inline-block;
+    background-color: #e63946;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+}
+
+.slide-cta:hover {
+    background-color: #d62839;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.6);
+}
+
+/* Slideshow Navigation Controls */
+.slideshow-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    display: flex;
+    gap: 12px;
+}
+
+.dot-indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.dot-indicator:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.dot-indicator.active {
+    background-color: #e63946;
+    border-color: #e63946;
+    box-shadow: 0 0 10px rgba(230, 57, 70, 0.8);
+}
+
+/* Mobile Responsive Adjustments for Slideshow */
+@media screen and (max-width: 767px) {
+    .slide-headline {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-bottom: 1rem;
+    }
+
+    .slide-text {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .slide-cta {
+        padding: 0.85rem 2rem;
+        font-size: 1rem;
+    }
+
+    .slideshow-controls {
+        bottom: 20px;
+    }
+
+    .dot-indicator {
+        width: 12px;
+        height: 12px;
+    }
+}
+
 /* ==================== SECTIONS GENERAL ==================== */
 section {
     padding: 4rem 0;

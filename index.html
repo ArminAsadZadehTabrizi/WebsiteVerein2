@@ -86,25 +86,47 @@
     <section class="hero" id="start">
         <div class="hero-slideshow">
             <!-- Slide 1: Soccer -->
-            <div class="hero-slide">
+            <div class="hero-slide active">
                 <img src="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1"
                     alt="Fußball - Sport und Leidenschaft">
+                <div class="slide-content">
+                    <h2 class="slide-headline">Fußball: Aufstieg in die Bezirksliga!</h2>
+                    <p class="slide-text">Unsere 1. Herren haben es geschafft. Danke an alle Fans!</p>
+                    <a href="#fussball" class="slide-cta">Zum Bericht</a>
+                </div>
             </div>
+
             <!-- Slide 2: Tennis -->
             <div class="hero-slide">
                 <img src="https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1"
                     alt="Tennis - Präzision und Technik">
+                <div class="slide-content">
+                    <h2 class="slide-headline">Tennis-Sommercamp voller Erfolg</h2>
+                    <p class="slide-text">Über 50 Kinder waren dabei. Nächstes Jahr wieder!</p>
+                    <a href="#tennis" class="slide-cta">Zum Bericht</a>
+                </div>
             </div>
-            <!-- Slide 3: Community/Event -->
+
+            <!-- Slide 3: New Artificial Turf -->
             <div class="hero-slide">
-                <img src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1"
-                    alt="Gemeinschaft und Zusammenhalt">
+                <img src="https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1"
+                    alt="Neuer Kunstrasen">
+                <div class="slide-content">
+                    <h2 class="slide-headline">Neuer Kunstrasen ist fertig</h2>
+                    <p class="slide-text">Ab sofort beste Trainingsbedingungen für alle Teams.</p>
+                    <a href="#training" class="slide-cta">Zum Bericht</a>
+                </div>
             </div>
         </div>
+
+        <!-- Dark Overlay for Better Text Readability -->
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h2 class="hero-headline">Sport, Gemeinschaft & Tradition seit 1904</h2>
-            <a href="#mitgliedschaft" class="cta-button">Mitglied werden</a>
+
+        <!-- Dot Navigation Controls -->
+        <div class="slideshow-controls">
+            <button class="dot-indicator active" data-slide="0" aria-label="Slide 1"></button>
+            <button class="dot-indicator" data-slide="1" aria-label="Slide 2"></button>
+            <button class="dot-indicator" data-slide="2" aria-label="Slide 3"></button>
         </div>
     </section>
 
