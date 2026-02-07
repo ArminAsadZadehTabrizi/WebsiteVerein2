@@ -33,6 +33,19 @@ if (tickerClose) {
     tickerClose.addEventListener('click', () => {
         // Add 'hidden' class to hide the ticker
         newsTicker.classList.add('hidden');
+
+        // Remove the white gap by resetting body padding and header margin
+        document.body.style.paddingTop = '0';
+
+        // Get the header element and reset its position to fill the gap
+        const header = document.querySelector('.site-header');
+        if (header) {
+            // Reset top position
+            header.style.top = '0';
+            // CRITICAL: Remove margin-top that was making room for the ticker
+            // This makes the blue header slide up instantly to fill the gap
+            header.style.marginTop = '0';
+        }
     });
 }
 
@@ -101,6 +114,27 @@ if (heroSlideshow) {
     if (slides.length > 1) {
         autoAdvanceInterval = setInterval(nextSlide, 5500);
     }
+}
+
+/* ==================== BACK TO TOP BUTTON ==================== */
+
+const backToTopBtn = document.getElementById('backToTop');
+
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 }
 
 /* ==================== SMOOTH SCROLL ENHANCEMENT ==================== */
