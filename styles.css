@@ -30,6 +30,8 @@ body {
 
 /* ==================== HEADER & NAVIGATION ==================== */
 .site-header {
+    position: relative;
+    z-index: 100;
     background-color: #004d99;
     /* Deep Club Blue */
     color: white;
